@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Create S3') {
             steps {
-               awsCodeBuild(projectName: 'project', credentialsType:'jenkins', credentialsId: 'AWSCredentials', region: 'ap-south-1', sourceControlType: 'jenkins',buildSpecFile:'')
+               awsCodeBuild(projectName: 'project', credentialsType:'jenkins', credentialsId: 'CodeBuildJenkins', region: 'ap-south-1', sourceControlType: 'jenkins',buildSpecFile:'')
             }
         }
     }
