@@ -1,9 +1,12 @@
 pipeline {
     agent any
+    environment {
+        JenkinsAccessKey = credentials('JenkinsAccessKey')
+    }
     stages {
         stage ('Create S3') {
             steps {
-               awsCodeBuild(projectName: 'project', credentialsType:'jenkins', region: 'us-west-2', sourceControlType: 'jenkins',buildSpecFile:'build/buildterraform.yml')
+               awsCodeBuild(projectName: 'project', credentialsType:'jenkins', credentialsId: 'JenkinsAccessKey', region: 'us-west-2', sourceControlType: 'jenkins',buildSpecFile:'')
             }
         }
     }
