@@ -8,7 +8,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "terraform_state" {
   # TODO: change this to your own name! S3 bucket names must be *globally* unique.
-  bucket = "suriya-build-artifacts"
+  bucket = "suriya-tf-state-bucket"
 
   # Enable versioning so we can see the full revision history of our
   # state files
@@ -26,12 +26,12 @@ resource "aws_s3_bucket" "terraform_state" {
   }
 }
 
-resource "aws_s3_bucket" "b" {
-  bucket = "my-tf-test-bucket"
-  acl    = "private"
+# resource "aws_s3_bucket" "b" {
+#   bucket = "my-tf-test-bucket"
+#   acl    = "private"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
+#   tags = {
+#     Name        = "My bucket"
+#     Environment = "Dev"
+#   }
+# }
