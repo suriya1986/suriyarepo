@@ -1,5 +1,7 @@
 version: 0.2
-
+env:
+  variables:
+    TF_VERSION: "0.13.4"
 #env:
 #  variables:
 #    key: "value"
@@ -8,12 +10,13 @@ version: 0.2
 phases:
   install:
     commands:
-      - wget https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip
-      - unzip -o terraform_0.13.4_linux_amd64.zip
-      - sudo mv terraform_0.13.4_linux_amd64 /bin
-      - rm terraform_0.13.4_linux_amd64.zip
+      - cd /usr/bin
+      - curl -s -qL -o terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
+      - unzip -o terraform.zip
   build:
     commands:
+      - echo $CODEBUILD_SRC_DIR
+      - cd $CODEBUILD_SRC_DIR/terraform
       - terraform init
       - echo "Post apply build"
   post_build:
