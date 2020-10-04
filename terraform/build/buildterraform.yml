@@ -15,7 +15,7 @@ phases:
       - rm terraform_0.10.4_linux_amd64.zip
   build:
     commands:
-      - . /tmp/aws_cred_export.txt &&  python runterraform.js.py $region $applicationname $destroy
+      - terraform init
       - echo "Post apply build"
   post_build:
     commands:
