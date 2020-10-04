@@ -16,7 +16,7 @@ phases:
   build:
     commands:
       - echo $CODEBUILD_SRC_DIR
-      - cd $CODEBUILD_SRC_DIR/terraform
+      - cd $CODEBUILD_SRC_DIR/terraform/build
       - terraform init
       - echo "Post apply build"
   post_build:
