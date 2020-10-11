@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ('Create S3') {
+        stage ('Create EC2') {
             steps {
                awsCodeBuild(projectName: 'Jenkins', credentialsType:'jenkins', credentialsId: 'CodeBuildJenkins', region: 'ap-south-1', sourceControlType: 'jenkins',buildSpecFile:'terraform/build/buildterraform.yml')
             }
