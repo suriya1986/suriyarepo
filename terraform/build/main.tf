@@ -1,5 +1,10 @@
 terraform {
   required_version = ">= 0.13"
+  backend "s3" {
+    bucket = "suriya-build-artifacts"
+    key    = "myapp/myapp.tfstate"
+    region = "ap-south-1"
+  }
 }
 
 provider "aws" {
