@@ -7,7 +7,9 @@ pipeline {
             }
         }
         stage('Deploy approval'){
-            input "Deploy to QA?"
+            steps {
+                input "Deploy to QA?"
+            }
         }
         stage ('Create EC2 in QA') {
             steps {
