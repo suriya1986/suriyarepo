@@ -2,6 +2,7 @@ terraform {
   required_version = ">= 0.13"
    backend "s3" {
       bucket = "suriya-build-artifacts"
+      key    = "myapp/${terraform.workspace}/myapp.tfstate"
    }
   # backend "s3" {
   #   bucket = "suriya-build-artifacts"
