@@ -17,8 +17,8 @@ phases:
     commands:
       - echo $CODEBUILD_SRC_DIR
       - cd $CODEBUILD_SRC_DIR/terraform/build
-      - terraform workspace new ${environment}
       - terraform init -input=false
+      - terraform workspace new ${environment}
       - terraform apply -input=false -auto-approve
       - echo "Post apply build"
   post_build:
