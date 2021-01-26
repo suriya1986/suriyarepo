@@ -25,6 +25,10 @@ resource "aws_instance" "web" {
   }
 }
 
+output "instance_arn" {
+  value = "${aws_instance.web.arn}"
+}
+
 # resource "aws_s3_bucket" "terraform_state" {
 #   # TODO: change this to your own name! S3 bucket names must be *globally* unique.
 #   bucket = "suriya-tf-state-bucket"
