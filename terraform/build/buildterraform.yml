@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    TF_VERSION: "0.13.4"
+    TF_VERSION: "0.14.8"
 #env:
 #  variables:
 #    key: "value"

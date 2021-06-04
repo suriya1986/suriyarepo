@@ -2,8 +2,8 @@ terraform {
   required_version = ">= 0.13"
    backend "s3" {
       bucket = "suriya-build-artifacts"
-      key    = "myapp.tfstate"
-      workspace_key_prefix="myapp"
+      key    = "sns.tfstate"
+      workspace_key_prefix="sns"
    }
   # backend "s3" {
   #   bucket = "suriya-build-artifacts"
@@ -20,18 +20,25 @@ variable "environment" {
   
 }
 
-resource "aws_instance" "web" {
-  ami           = "ami-0e306788ff2473ccb"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "HelloWorld-${var.environment}"
-  }
+resource "aws_sns_topic" "topic"
+{
+  name                        = "user-updates-topic.fifo"
+  fifo_topic                  = true
+  content_based_deduplication = true
 }
 
-output "instance_arn" {
-  value = "${aws_instance.web.arn}"
-}
+# resource "aws_instance" "web" {
+#   ami           = "ami-0e306788ff2473ccb"
+#   instance_type = "t2.micro"
+
+#   tags = {
+#     Name = "HelloWorld-${var.environment}"
+#   }
+# }
+
+# output "instance_arn" {
+#   value = "${aws_instance.web.arn}"
+# }
 
 # resource "aws_s3_bucket" "terraform_state" {
 #   # TODO: change this to your own name! S3 bucket names must be *globally* unique.
